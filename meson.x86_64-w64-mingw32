@@ -1,0 +1,24 @@
+[host_machine]
+system = 'windows'
+cpu_family = 'x86_64'
+cpu = 'x86_64'
+endian = 'little'
+
+[binaries]
+c = 'x86_64-w64-mingw32-gcc'
+cpp = 'x86_64-w64-mingw32-g++'
+strip = 'x86_64-w64-mingw32-strip'
+pkgconfig = 'x86_64-w64-mingw32-pkg-config'
+ar = 'x86_64-w64-mingw32-ar'
+ranlib = 'x86_64-w64-mingw32-ranlib'
+windres = 'x86_64-w64-mingw32-windres'
+
+[built-in options]
+prefix = '/mingw/x86_64-w64-mingw32'
+c_args = [ '-fno-ident', '-I/mingw/x86_64-w64-mingw32/include' ]
+c_link_args = [ '-static-libgcc' , '-L/mingw/x86_64-w64-mingw32/lib' ]
+cpp_link_args = c_link_args + [ '-static-libstdc++' ]
+pkg_config_path = '/mingw/x86_64-w64-mingw32/lib/pkgconfig'
+
+buildtype= 'release'
+default_library= 'both'
