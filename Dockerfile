@@ -19,7 +19,7 @@ RUN mkdir -p /tmp/build && \
     rm -rf /root/.cache /var/lib/apt/lists/* && \
     curl -o /usr/bin/waf https://waf.io/waf-2.0.23 && chmod 755 /usr/bin/waf && \
     curl -o /tmp/build/rustup-init -O https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init && \
-    chmod 755 /tmp/build/rustup-init && /tmp/build/rustup-init -y --no-modify-path --default-toolchain nightly && && \
+    chmod 755 /tmp/build/rustup-init && /tmp/build/rustup-init -y --no-modify-path --default-toolchain nightly && \
     rustup target add x86_64-pc-windows-gnu i686-pc-windows-gnu x86_64-unknown-linux-musl && \
     ( curl -L `curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/rizinorg/rizin/releases/latest | jq -r '.assets[].browser_download_url|select(test("-static-x86_64.tar"))'` | bsdtar xvf - -C /usr ) && \
     ( mkdir -p /usr/lib/zig && curl -L `curl -L https://ziglang.org/download/index.json | jq -r '.master."x86_64-linux".tarball'` | bsdtar xvf - --strip-components 1 -C /usr/lib/zig && ln -sf /usr/lib/zig/zig /usr/bin/zig ) && \
